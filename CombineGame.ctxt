@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=frameWidth\ frameHeight
+comment0.target=CombineGame(int,\ int)
+comment1.params=
+comment1.target=void\ move()
+comment2.params=
+comment2.target=void\ stop()
+comment3.params=
+comment3.target=void\ go()
+comment4.params=
+comment4.target=void\ continueGame()
+comment5.params=
+comment5.target=void\ restartGame()
+comment6.params=g
+comment6.target=void\ paintComponent(java.awt.Graphics)
+comment7.params=
+comment7.target=void\ levelUp()
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+comment9.params=e
+comment9.target=void\ keyPressed(java.awt.event.KeyEvent)
+numComments=10

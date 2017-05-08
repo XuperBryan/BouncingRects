@@ -1,5 +1,7 @@
+
+
 /**
- * Write a description of class CombineTarget here.
+ * Write a description of class Target here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -12,7 +14,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.KeyStroke;
 import java.util.Random;
-public class CombineTarget extends JComponent
+public class Target extends JComponent
 {
     public Rectangle rect;
     public int width = 300;
@@ -22,11 +24,12 @@ public class CombineTarget extends JComponent
     public int frameWidth;
     public int frameHeight;
     public boolean moving;
-    public CombineTarget(int frameWidth, int frameHeight)
+    public Target(int frameWidth, int frameHeight)
     {
         this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
-        rect = new Rectangle(350,50,width,height);
+        Random gen = new Random();
+        rect = new Rectangle(gen.nextInt(frameWidth-width-1),gen.nextInt(frameHeight-height-1),width,height);
         moving = true;
     }
     public void paintComponent(Graphics g)
@@ -50,20 +53,23 @@ public class CombineTarget extends JComponent
         }
     }
     public void setSpeedY(int speed){
-        speedY = speed*maybeNegative();
+        Random gen = new Random();
+        int chance = gen.nextInt(2);
+        if(chance==1){
+            speedY = speed;
+        }else{
+            speedY = -speed;
+        }
         repaint();
     }
     public void setSpeedX(int speed){
-        speedX = speed*maybeNegative();
-        repaint();
-    }
-    public void antishrink(){
-        Rectangle result = rect;
-        rect = new Rectangle(result.x,result.y,(int)(result.getWidth()*10/9),(int)(result.getHeight()*10/9));
-        rect.width = (int)(result.getWidth()*10/9);
-        rect.height = (int)(result.getHeight()*10/9);
-        
-        revalidate();
+        Random gen = new Random();
+        int chance = gen.nextInt(2);
+        if(chance==1){
+            speedX = speed;
+        }else{
+            speedX = -speed;
+        }
         repaint();
     }
     public void shrink(){
@@ -73,16 +79,23 @@ public class CombineTarget extends JComponent
         rect.height = (int)(result.getHeight()*.9);
         if(speedY>0){
             speedY++;
-        }
-        if(speedY<0){
+        }else{
             speedY--;
         }
         if(speedX>0){
             speedX++;
-        }
-        if(speedX<0){
+        }else{
             speedX--;
         }
+        revalidate();
+        repaint();
+    }
+    public void restart(){
+        Random gen = new Random();
+        rect = new Rectangle(gen.nextInt(frameWidth-width-1),gen.nextInt(frameHeight-height-1),width,height);
+        moving = true;
+        setSpeedX(1    );
+        setSpeedY(1);
         revalidate();
         repaint();
     }
@@ -112,8 +125,5 @@ public class CombineTarget extends JComponent
     public boolean check(int x, int y, int width, int height){
         Rectangle checker = new Rectangle(x,y,width,height);
         return rect.intersects(checker);
-    }
-    public int maybeNegative(){
-        return (int)(Math.random()*2)*2-1;
     }
 }

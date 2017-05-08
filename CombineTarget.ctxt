@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=frameWidth\ frameHeight
+comment0.target=CombineTarget(int,\ int)
+comment1.params=g
+comment1.target=void\ paintComponent(java.awt.Graphics)
+comment10.params=x\ y\ width\ height
+comment10.target=boolean\ check(int,\ int,\ int,\ int)
+comment11.params=
+comment11.target=int\ maybeNegative()
+comment2.params=
+comment2.target=void\ move()
+comment3.params=speed
+comment3.target=void\ setSpeedY(int)
+comment4.params=speed
+comment4.target=void\ setSpeedX(int)
+comment5.params=
+comment5.target=void\ antishrink()
+comment6.params=
+comment6.target=void\ shrink()
+comment7.params=
+comment7.target=void\ reduceSpeed()
+comment8.params=
+comment8.target=void\ go()
+comment9.params=
+comment9.target=void\ stop()
+numComments=12
